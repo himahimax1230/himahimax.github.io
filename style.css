@@ -1,7 +1,6 @@
 /* 全体 */
 :root {
   scroll-behavior: smooth;
-  font-family: 'メイリオ' sans-serif;
   /* padding: 0 500px; */
 }
 
@@ -9,6 +8,7 @@ body {
   background-color: #383838;
   color: #ffffff;
   text-align: center;
+  font-family: '游ゴシック体', YuGothic, '游ゴシック Medium', 'Yu Gothic Medium', '游ゴシック', 'Yu Gothic', sans-serif;
   /* margin: 0, 500px; */
   /* padding: 0 500px; */
 }

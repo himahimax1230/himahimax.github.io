@@ -64,3 +64,10 @@ img {
   max-width: 400px;
   height: auto;
 }
+
+@media screen and (max-width: 520px) {
+  a {
+    width: 100%;
+    height: auto; /* × 高さが潰れる原因になるため削除 */
+  }
+}

@@ -1,3 +1,10 @@
+const hasPlayedOpeningShutter = sessionStorage.getItem('openingShutterPlayed') === 'true';
+if (hasPlayedOpeningShutter) {
+  document.getElementById('shutter').remove();
+} else {
+  sessionStorage.setItem('openingShutterPlayed', 'true');
+}
+
 const canvas = document.getElementById('particle-canvas');
 const ctx = canvas.getContext('2d');
 const shutter = document.getElementById('shutter');
@@ -112,21 +119,23 @@ function animate() {
   }
 }
 
-init();
-animate();
+if (!hasPlayedOpeningShutter) {
+  init();
+  animate();
 
-// タイムライン制御
-setTimeout(() => {
-  mode = 'text';
-}, 2800);
+  // タイムライン制御
+  setTimeout(() => {
+    mode = 'text';
+  }, 2800);
 
-setTimeout(() => {
-  shutter.classList.add('is-open');
-}, 4800);
+  setTimeout(() => {
+    shutter.classList.add('is-open');
+  }, 4800);
+}
 
 // ウィンドウサイズが変わったときの再計算
 window.addEventListener('resize', () => {
-  if (!shutter.classList.contains('is-open')) {
+  if (!hasPlayedOpeningShutter && !shutter.classList.contains('is-open')) {
     width = canvas.width = window.innerWidth;
     height = canvas.height = window.innerHeight;
     createLineSegments();

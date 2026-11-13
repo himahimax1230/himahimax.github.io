@@ -4,13 +4,71 @@
   /* padding: 0 500px; */
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-  background-color: #383838;
+  background-color: #121f17;
   color: #ffffff;
   text-align: center;
-  font-family: '游ゴシック体', YuGothic, '游ゴシック Medium', 'Yu Gothic Medium', '游ゴシック', 'Yu Gothic', "Hiragino Sans", "Hiragino Kaku Gothic ProN" ,sans-serif;
-  /* margin: 0, 500px; */
-  /* padding: 0 500px; */
+  font-family:
+    '游ゴシック体', YuGothic, '游ゴシック Medium', 'Yu Gothic Medium', '游ゴシック', 'Yu Gothic', 'Hiragino Sans',
+    'Hiragino Kaku Gothic ProN', sans-serif;
+  overflow-x: hidden;
+}
+
+/* オープニングシャッター全体 */
+#shutter {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  pointer-events: auto;
+}
+
+/* 左右のシャッター幕 */
+.shutter-panel {
+  width: 50%;
+  height: 100%;
+  background-color: #0d1711; /* 深いダークグリーン */
+  transition: transform 1.1s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+#shutter.is-open {
+  pointer-events: none;
+}
+#shutter.is-open .shutter-left {
+  transform: translateX(-100%);
+}
+#shutter.is-open .shutter-right {
+  transform: translateX(100%);
+}
+
+/* キャンバス */
+#particle-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transition: opacity 0.5s ease;
+}
+#shutter.is-open #particle-canvas {
+  opacity: 0;
+}
+
+/* メインコンテンツ */
+main {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+  background-color: #121f17;
 }
 
 a {
